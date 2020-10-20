@@ -1,0 +1,16 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Patrick+Hand");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+@import "~mdbootstrap/scss/mdb-free";
+
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+body,
+html {
+    font-family: $font-family-sans-serif;
+}
