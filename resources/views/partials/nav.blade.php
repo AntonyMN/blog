@@ -21,6 +21,9 @@
               <a href="{{ route('users.index') }}" class="dropdown-item">
                 <i class="fa fa-users"></i> Manage Members
               </a>
+              <a href="{{ route('blog-categories.index') }}" class="dropdown-item">
+                <i class="fa fa-sitemap"></i> Blog categories
+              </a>
             </div>
           </li>
         @endif
@@ -48,7 +51,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();">
+                                                                           document.getElementById('logout-form').submit();">
                 {{ __('Logout') }}
               </a>
 

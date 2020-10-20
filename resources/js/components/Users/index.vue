@@ -45,7 +45,7 @@
                     </div>
                     <div class="card-body p-2">
                         <table
-                            class="table table-borderless table-striped table-sm"
+                            class="table table-secondary table-borderless table-striped table-sm mb-0"
                         >
                             <thead class="bg-grey">
                                 <tr>
@@ -71,13 +71,13 @@
                                     </td>
                                     <td>
                                         <span
-                                            class="badge badge-success"
+                                            class="badge p-2 badge-success"
                                             v-if="member.admin"
                                         >
                                             Admin
                                         </span>
                                         <span
-                                            class="badge badge-primary"
+                                            class="badge p-2 badge-light"
                                             v-if="!member.admin"
                                         >
                                             Member
