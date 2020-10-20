@@ -16,8 +16,7 @@ class UserController extends Controller
     {
         if(request()->ajax()) {
             return response()->json([
-                'members' => User::where('admin', false)
-                    ->orderby('name', 'asc')->paginate(10),
+                'members' => User::orderby('name', 'asc')->paginate(10),
             ]);
         }
         return view('admin.users.index');
@@ -80,7 +79,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        User::find($id)->update($request->all());
     }
 
     /**

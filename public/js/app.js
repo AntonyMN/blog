@@ -2026,6 +2026,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2047,6 +2074,50 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get(link).then(function (r) {
         _this.members = r.data.members;
+      });
+    },
+    makeAdmin: function makeAdmin(member) {
+      var _this2 = this;
+
+      Swal.fire({
+        title: "Make ".concat(member.name, " an admin?"),
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#38c172",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Make admin"
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          axios.patch("/admin/users/" + member.id, {
+            admin: true
+          }).then(function (r) {
+            _this2.getData();
+
+            Swal.fire("Success", "Member is now an admin.", "success");
+          });
+        }
+      });
+    },
+    removeAdmin: function removeAdmin(member) {
+      var _this3 = this;
+
+      Swal.fire({
+        title: "Remove ".concat(member.name, " as an admin?"),
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#38c172",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Remove admin"
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          axios.patch("/admin/users/" + member.id, {
+            admin: false
+          }).then(function (r) {
+            _this3.getData();
+
+            Swal.fire("Success", "Member is now an admin.", "success");
+          });
+        }
       });
     }
   }
@@ -79486,7 +79557,65 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(2, true)
+                      _c("td", [
+                        member.admin
+                          ? _c("span", { staticClass: "badge badge-success" }, [
+                              _vm._v(
+                                "\n                                        Admin\n                                    "
+                              )
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        !member.admin
+                          ? _c("span", { staticClass: "badge badge-primary" }, [
+                              _vm._v(
+                                "\n                                        Member\n                                    "
+                              )
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        !member.admin
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-dark m-1 p-1",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.makeAdmin(member)
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        Make admin\n                                    "
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        member.admin
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger m-1 p-1",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.removeAdmin(member)
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                        Remove as admin\n                                    "
+                                )
+                              ]
+                            )
+                          : _vm._e()
+                      ])
                     ])
                   }),
                   0
@@ -79520,19 +79649,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Email")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Action")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-dark m-1 p-1" }, [
-        _vm._v(
-          "\n                                        Make admin\n                                    "
-        )
       ])
     ])
   }
