@@ -19,6 +19,8 @@ class CreateBlogCategoriesTable extends Migration
             $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->timestamps();
+
+            $table->foreign('blog_category_id')->reference('id')->on('blog_categories');
         });
     }
 

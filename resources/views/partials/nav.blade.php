@@ -27,6 +27,16 @@
             </div>
           </li>
         @endif
+
+        @if (auth()->check())
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('blogs.index') }}">
+              <i class="fa fa-globe"></i> My work
+            </a>
+          </li>
+
+        @endif
+
       </ul>
 
       <!-- Right Side Of Navbar -->
@@ -45,14 +55,17 @@
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false" v-pre>
-              {{ Auth::user()->name }}
+              <i class="fa fa-user-circle"></i> {{ Auth::user()->name }}
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a href="{{ route('blogs.create') }}" class="dropdown-item">
+                <i class="fa fa-pen"></i> Write
+              </a>
               <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
-                                                                           document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
+                                                                                   document.getElementById('logout-form').submit();">
+                <i class="fa fa-sign-out-alt"></i> {{ __('Logout') }}
               </a>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
